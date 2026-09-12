@@ -25,13 +25,18 @@ export default function App() {
 
   useEffect(() => {
     persistLang(lang)
-    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en"
+    const html = document.documentElement
+    html.lang = lang === "pt" ? "pt-BR" : "en"
+    // Impede o navegador de traduzir a página automaticamente:
+    // usamos apenas as traduções internas (PT/EN), preservando o logo SHEEP3.
+    html.setAttribute("translate", "no")
+    html.classList.add("notranslate")
   }, [lang])
 
   const t = translations[lang]
 
   return (
-    <div className="relative w-full bg-[#ffc83d]">
+    <div className="notranslate relative w-full bg-[#ffc83d]" translate="no">
       {/* Seletor de idioma — sempre fixo no canto superior direito da tela */}
       <LanguageToggle
         lang={lang}
