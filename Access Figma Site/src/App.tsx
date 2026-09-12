@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import SheepThree, { SheepThreeResponsive } from "@/SheepThree"
+import { detectInitialLang, persistLang, translations, type Lang } from "@/i18n"
 
 // Native dimensions of the imported Figma "Desktop" frame.
 const FRAME_W = 1273
@@ -8,6 +9,7 @@ const FRAME_H = 1042
 export default function App() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
+  const [lang, setLang] = useState<Lang>(detectInitialLang)
 
   useEffect(() => {
     const el = containerRef.current
@@ -19,6 +21,13 @@ export default function App() {
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
+
+  useEffect(() => {
+    persistLang(lang)
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en"
+  }, [lang])
+
+  const t = translations[lang]
 
   return (
     <div className="w-full bg-[#ffc83d]">
@@ -35,13 +44,13 @@ export default function App() {
             transformOrigin: "center",
           }}
         >
-          <SheepThree />
+          <SheepThree lang={lang} onLangChange={setLang} t={t} />
         </div>
       </div>
 
       {/* Tablet e celular: layout fluido responsivo */}
       <div className="lg:hidden">
-        <SheepThreeResponsive />
+        <SheepThreeResponsive lang={lang} onLangChange={setLang} t={t} />
       </div>
     </div>
   )

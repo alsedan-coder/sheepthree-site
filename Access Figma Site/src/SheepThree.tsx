@@ -1,7 +1,12 @@
 import imgRemoverFundoETexto1 from "@/imports/Desktop/06c9fea3ea608b0fab3e03e9bc54481e9a0e0517.png";
+import LanguageToggle from "@/LanguageToggle";
+import { translations, type Copy, type Lang } from "@/i18n";
 
-const WHATSAPP_URL =
-  "https://wa.me/5519996363060?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20a%20Sheep3%2C%20vim%20atrav%C3%A9s%20do%20seu%20site%21";
+type LangProps = {
+  lang?: Lang;
+  onLangChange: (lang: Lang) => void;
+  t?: Copy;
+};
 
 function Logo() {
   return (
@@ -22,13 +27,24 @@ function Logo() {
   );
 }
 
-export function SheepThreeResponsive() {
+export function SheepThreeResponsive({
+  lang = "pt",
+  onLangChange,
+  t = translations[lang ?? "pt"],
+}: LangProps) {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[#ffc83d] flex flex-col items-center px-6 py-8 text-black">
       {/* Círculo turquesa decorativo */}
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[18vw] -top-[14vw] aspect-square w-[75vw] max-w-[460px] rounded-full bg-[#10B8C8]"
+      />
+
+      {/* Seletor de idioma */}
+      <LanguageToggle
+        lang={lang}
+        onChange={onLangChange}
+        className="absolute right-5 top-5 z-10"
       />
 
       {/* Bloco superior + ovelhas, centralizados verticalmente */}
@@ -59,7 +75,7 @@ export function SheepThreeResponsive() {
             letterSpacing: "clamp(2px, 0.9vw, 6.3px)",
           }}
         >
-          SEJA A EXCEÇÃO A REGRA
+          {t.tagline}
         </p>
 
         <div className="h-0.5 w-[90px] bg-black" />
@@ -68,13 +84,13 @@ export function SheepThreeResponsive() {
           className="mt-3 max-w-[38rem] text-center font-['Kufam:Regular',sans-serif] leading-tight"
           style={{ fontSize: "clamp(18px, 5.2vw, 40px)" }}
         >
-          Ideias criativas e estratégias pra quem não quer mais fazer o mesmo
+          {t.ideias}
         </p>
 
         {/* Ovelhas */}
         <img
           src={imgRemoverFundoETexto1}
-          alt="Ovelhas de crochê representando a Sheepthree"
+          alt={t.imgAlt}
           className="mt-6 w-full max-w-[42rem] object-contain"
         />
       </div>
@@ -85,31 +101,35 @@ export function SheepThreeResponsive() {
           className="mb-2 text-center font-['Lily_Script_One:Regular',sans-serif] text-white"
           style={{ fontSize: "clamp(16px, 4.5vw, 22px)" }}
         >
-          Estamos em construção
+          {t.estamos}
         </p>
 
         <a
-          href={WHATSAPP_URL}
+          href={t.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-full max-w-[480px] items-center justify-center rounded-[12px] bg-black px-6 py-4 text-center font-['Lilita_One:Regular',sans-serif] text-white transition-all duration-200 hover:bg-[#1a1a1a] active:scale-[0.98]"
           style={{ fontSize: "clamp(18px, 4.8vw, 30px)" }}
         >
-          Quer saber mais? Fale com a gente
+          {t.botao}
         </a>
 
         <p
           className="mt-6 text-center font-['ABeeZee:Regular',sans-serif] text-[#121111]"
           style={{ fontSize: "clamp(12px, 3.2vw, 16px)" }}
         >
-          © 2026 Sheepthree. Todos os direitos reservados.
+          {t.direitos}
         </p>
       </div>
     </div>
   );
 }
 
-export default function SheepThree() {
+export default function SheepThree({
+  lang = "pt",
+  onLangChange,
+  t = translations[lang ?? "pt"],
+}: LangProps) {
   return (
     <div className="bg-[#ffc83d] relative size-full" data-name="Desktop">
       <div className="-translate-x-1/2 -translate-y-1/2 absolute flex h-[1418.026px] items-center justify-center left-[calc(50%+897.82px)] top-[calc(50%-229.99px)] w-[1667.641px]">
@@ -122,11 +142,19 @@ export default function SheepThree() {
         </div>
       </div>
       <div className="absolute aspect-[4096/2048] bottom-[130px] left-[122px] right-[130px]" data-name="Remover Fundo e Texto 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRemoverFundoETexto1} />
+        <img alt={t.imgAlt} className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRemoverFundoETexto1} />
       </div>
+
+      {/* Seletor de idioma */}
+      <LanguageToggle
+        lang={lang}
+        onChange={onLangChange}
+        className="absolute right-[48px] top-[48px] z-10 scale-150"
+      />
+
       <Logo />
-      <p className="[word-break:break-word] absolute font-['Marmelad:Regular',sans-serif] h-[35px] leading-[99.9749984741211%] not-italic right-[637px] text-[35px] text-black text-center top-[254px] tracking-[6.3px] translate-x-1/2 w-[862px]">SEJA A EXCEÇÃO A REGRA</p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Kufam:Regular',sans-serif] font-normal leading-[normal] left-1/2 text-[40px] text-black text-center top-[418px] tracking-[-1.6px] w-[720px]">Ideias criativas e estratégias pra quem não quer mais fazer o mesmo</p>
+      <p className="[word-break:break-word] absolute font-['Marmelad:Regular',sans-serif] h-[35px] leading-[99.9749984741211%] not-italic right-[637px] text-[35px] text-black text-center top-[254px] tracking-[6.3px] translate-x-1/2 w-[862px]">{t.tagline}</p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Kufam:Regular',sans-serif] font-normal leading-[normal] left-1/2 text-[40px] text-black text-center top-[418px] tracking-[-1.6px] w-[720px]">{t.ideias}</p>
       <div className="absolute h-0 left-[583px] top-[330px] w-[107px]">
         <div className="absolute inset-[-2px_0_0_0]">
           <svg className="block size-full" fill="none" height="2" preserveAspectRatio="none" viewBox="0 0 107 2" width="107">
@@ -136,21 +164,21 @@ export default function SheepThree() {
       </div>
 
       {/* "Estamos em construção" — acima do botão */}
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Lily_Script_One:Regular',sans-serif] leading-[99.9749984741211%] left-[calc(50%+1px)] not-italic text-[22px] text-center text-white top-[848px] whitespace-nowrap">Estamos em construção</p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Lily_Script_One:Regular',sans-serif] leading-[99.9749984741211%] left-[calc(50%+1px)] not-italic text-[22px] text-center text-white top-[848px] whitespace-nowrap">{t.estamos}</p>
 
       {/* Botão de contato via WhatsApp */}
       <a
-        href={WHATSAPP_URL}
+        href={t.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
         className="-translate-x-1/2 absolute bg-black h-[76px] left-[calc(50%+4px)] rounded-[12px] top-[875px] w-[480px] flex items-center justify-center transition-all duration-200 hover:bg-[#1a1a1a] hover:scale-[1.02] active:scale-100"
       >
         <span className="[word-break:break-word] font-['Lilita_One:Regular',sans-serif] leading-[99.9749984741211%] not-italic text-[30px] text-center text-white whitespace-nowrap">
-          Quer saber mais? Fale com a gente
+          {t.botao}
         </span>
       </a>
 
-      <p className="[word-break:break-word] absolute bottom-[18px] font-['ABeeZee:Regular',sans-serif] leading-[99.9749984741211%] not-italic right-[208.5px] text-[#121111] text-[16px] text-center translate-x-1/2 whitespace-nowrap">© 2026 Sheepthree. Todos os direitos reservados.</p>
+      <p className="[word-break:break-word] absolute bottom-[18px] font-['ABeeZee:Regular',sans-serif] leading-[99.9749984741211%] not-italic right-[208.5px] text-[#121111] text-[16px] text-center translate-x-1/2 whitespace-nowrap">{t.direitos}</p>
     </div>
   );
 }
