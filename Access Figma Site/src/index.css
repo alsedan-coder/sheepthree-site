@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Konkhmer Sleokchher:Regular';
+  src: url('https://static.figma.com/font/KonkhmerSleokchher-Regular_1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Marmelad:Regular';
+  src: url('https://static.figma.com/font/Marmelad-Regular_2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kufam:Regular';
+  src: url('https://static.figma.com/font/Kufam_wght__1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lilita One:Regular';
+  src: url('https://static.figma.com/font/LilitaOne-Regular_1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lily Script One:Regular';
+  src: url('https://static.figma.com/font/LilyScriptOne-Regular_1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABeeZee:Regular';
+  src: url('https://static.figma.com/font/ABeeZee-Regular_2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}

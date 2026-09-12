@@ -1,0 +1,10 @@
+{
+  "fonts": [
+    { "family": "Konkhmer Sleokchher", "style": "Regular", "fontId": "KonkhmerSleokchher-Regular_1", "source": "GOOGLE" },
+    { "family": "Marmelad", "style": "Regular", "fontId": "Marmelad-Regular_2", "source": "GOOGLE" },
+    { "family": "Kufam", "style": "Regular", "fontId": "Kufam_wght__1", "source": "GOOGLE" },
+    { "family": "Lilita One", "style": "Regular", "fontId": "LilitaOne-Regular_1", "source": "GOOGLE" },
+    { "family": "Lily Script One", "style": "Regular", "fontId": "LilyScriptOne-Regular_1", "source": "GOOGLE" },
+    { "family": "ABeeZee", "style": "Regular", "fontId": "ABeeZee-Regular_2", "source": "GOOGLE" }
+  ]
+}
