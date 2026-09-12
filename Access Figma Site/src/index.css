@@ -1,5 +1,15 @@
 @import 'tailwindcss';
 
+/* Garante o fundo amarelo mesmo antes do React montar ou se o JS falhar,
+   evitando tela preta em navegadores com tema escuro (ex.: Opera). */
+html,
+body,
+#root {
+  background-color: #ffc83d;
+  min-height: 100%;
+  color-scheme: light;
+}
+
 @font-face {
   font-family: 'Konkhmer Sleokchher:Regular';
   src: url('https://static.figma.com/font/KonkhmerSleokchher-Regular_1') format('woff2');
