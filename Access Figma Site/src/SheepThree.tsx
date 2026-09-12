@@ -1,10 +1,8 @@
 import imgRemoverFundoETexto1 from "@/imports/Desktop/06c9fea3ea608b0fab3e03e9bc54481e9a0e0517.png";
-import LanguageToggle from "@/LanguageToggle";
 import { translations, type Copy, type Lang } from "@/i18n";
 
 type LangProps = {
   lang?: Lang;
-  onLangChange: (lang: Lang) => void;
   t?: Copy;
 };
 
@@ -29,7 +27,6 @@ function Logo() {
 
 export function SheepThreeResponsive({
   lang = "pt",
-  onLangChange,
   t = translations[lang ?? "pt"],
 }: LangProps) {
   return (
@@ -38,13 +35,6 @@ export function SheepThreeResponsive({
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[18vw] -top-[14vw] aspect-square w-[75vw] max-w-[460px] rounded-full bg-[#10B8C8]"
-      />
-
-      {/* Seletor de idioma */}
-      <LanguageToggle
-        lang={lang}
-        onChange={onLangChange}
-        className="absolute right-5 top-5 z-10"
       />
 
       {/* Bloco superior + ovelhas, centralizados verticalmente */}
@@ -127,7 +117,6 @@ export function SheepThreeResponsive({
 
 export default function SheepThree({
   lang = "pt",
-  onLangChange,
   t = translations[lang ?? "pt"],
 }: LangProps) {
   return (
@@ -144,13 +133,6 @@ export default function SheepThree({
       <div className="absolute aspect-[4096/2048] bottom-[130px] left-[122px] right-[130px]" data-name="Remover Fundo e Texto 1">
         <img alt={t.imgAlt} className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRemoverFundoETexto1} />
       </div>
-
-      {/* Seletor de idioma */}
-      <LanguageToggle
-        lang={lang}
-        onChange={onLangChange}
-        className="absolute right-[48px] top-[48px] z-10 scale-150"
-      />
 
       <Logo />
       <p className="[word-break:break-word] absolute font-['Marmelad:Regular',sans-serif] h-[35px] leading-[99.9749984741211%] not-italic right-[637px] text-[35px] text-black text-center top-[254px] tracking-[6.3px] translate-x-1/2 w-[862px]">{t.tagline}</p>
@@ -178,7 +160,7 @@ export default function SheepThree({
         </span>
       </a>
 
-      <p className="[word-break:break-word] absolute bottom-[18px] font-['ABeeZee:Regular',sans-serif] leading-[99.9749984741211%] not-italic right-[208.5px] text-[#121111] text-[16px] text-center translate-x-1/2 whitespace-nowrap">{t.direitos}</p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['ABeeZee:Regular',sans-serif] leading-[99.9749984741211%] left-1/2 not-italic text-[#121111] text-[16px] text-center top-[975px] whitespace-nowrap">{t.direitos}</p>
     </div>
   );
 }

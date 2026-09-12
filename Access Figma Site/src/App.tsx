@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import SheepThree, { SheepThreeResponsive } from "@/SheepThree"
+import LanguageToggle from "@/LanguageToggle"
 import { detectInitialLang, persistLang, translations, type Lang } from "@/i18n"
 
 // Native dimensions of the imported Figma "Desktop" frame.
@@ -30,7 +31,14 @@ export default function App() {
   const t = translations[lang]
 
   return (
-    <div className="w-full bg-[#ffc83d]">
+    <div className="relative w-full bg-[#ffc83d]">
+      {/* Seletor de idioma — sempre fixo no canto superior direito da tela */}
+      <LanguageToggle
+        lang={lang}
+        onChange={setLang}
+        className="fixed right-5 top-5 z-50"
+      />
+
       {/* Desktop: frame do Figma escalado para caber inteiro em 100vh */}
       <div
         ref={containerRef}
@@ -44,13 +52,13 @@ export default function App() {
             transformOrigin: "center",
           }}
         >
-          <SheepThree lang={lang} onLangChange={setLang} t={t} />
+          <SheepThree lang={lang} t={t} />
         </div>
       </div>
 
       {/* Tablet e celular: layout fluido responsivo */}
       <div className="lg:hidden">
-        <SheepThreeResponsive lang={lang} onLangChange={setLang} t={t} />
+        <SheepThreeResponsive lang={lang} t={t} />
       </div>
     </div>
   )
