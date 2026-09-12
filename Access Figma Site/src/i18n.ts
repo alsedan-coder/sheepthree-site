@@ -38,14 +38,22 @@ const STORAGE_KEY = "sheepthree-lang";
 
 export function detectInitialLang(): Lang {
   if (typeof window === "undefined") return "pt";
-  const saved = window.localStorage.getItem(STORAGE_KEY);
-  if (saved === "pt" || saved === "en") return saved;
+  // localStorage pode lançar erro (modo privado / bloqueio de dados no Opera etc.)
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved === "pt" || saved === "en") return saved;
+  } catch {
+    /* acesso ao armazenamento bloqueado — segue com a detecção do navegador */
+  }
   const nav = window.navigator.language?.toLowerCase() ?? "";
   return nav.startsWith("pt") ? "pt" : "en";
 }
 
 export function persistLang(lang: Lang) {
-  if (typeof window !== "undefined") {
+  if (typeof window === "undefined") return;
+  try {
     window.localStorage.setItem(STORAGE_KEY, lang);
+  } catch {
+    /* acesso ao armazenamento bloqueado — ignora a persistência */
   }
 }

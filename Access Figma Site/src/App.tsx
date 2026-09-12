@@ -31,6 +31,7 @@ export default function App() {
     // usamos apenas as traduções internas (PT/EN), preservando o logo SHEEP3.
     html.setAttribute("translate", "no")
     html.classList.add("notranslate")
+    document.title = "Sheep3"
   }, [lang])
 
   const t = translations[lang]
